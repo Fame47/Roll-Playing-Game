@@ -1,0 +1,22 @@
+{
+  "name": "BNP's R.P.G. Roll-Playing Game",
+  "short_name": "BNP RPG",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#700000",
+  "theme_color": "#8b0000",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
