@@ -1,0 +1,54 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function validLeaderboardEntry(uid, modeName) {
+      return request.auth != null
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly([
+          'uid', 'name', 'score', 'mode', 'updatedAt'
+        ])
+        && request.resource.data.uid == uid
+        && request.resource.data.mode == modeName
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 1
+        && request.resource.data.name.size() <= 13
+        && request.resource.data.name.matches('^[A-Za-z0-9 @]+$')
+        && request.resource.data.score is int
+        && request.resource.data.score >= 0
+        && request.resource.data.score <= 99999999
+        && request.resource.data.updatedAt == request.time;
+    }
+
+    function validCreate(uid, modeName) {
+      return validLeaderboardEntry(uid, modeName);
+    }
+
+    function validUpdate(uid, modeName) {
+      return validLeaderboardEntry(uid, modeName)
+        && request.resource.data.score >= resource.data.score;
+    }
+
+    match /leaderboards_rollplay/{uid} {
+      allow read: if true;
+      allow create: if validCreate(uid, 'rollplay');
+      allow update: if validUpdate(uid, 'rollplay');
+      allow delete: if false;
+    }
+
+    match /leaderboards_3000/{uid} {
+      allow read: if true;
+      allow create: if validCreate(uid, '3000');
+      allow update: if validUpdate(uid, '3000');
+      allow delete: if false;
+    }
+
+    match /leaderboards_9000/{uid} {
+      allow read: if true;
+      allow create: if validCreate(uid, '9000');
+      allow update: if validUpdate(uid, '9000');
+      allow delete: if false;
+    }
+  }
+}
