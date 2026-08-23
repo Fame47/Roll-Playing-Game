@@ -1,17 +1,13 @@
 /*
   BNP R.P.G. Firebase Web App Config
-
-  In Firebase Console:
-  Project Settings -> Your apps -> Web app -> SDK setup and configuration
-
-  Paste ONLY the values from your Firebase config object below.
-  Do not reuse another game's Firebase project.
+  Project: bnp-s-roll-playing-game
 */
 window.BNP_FIREBASE_CONFIG = {
-  apiKey: "PASTE_API_KEY_HERE",
-  authDomain: "PASTE_PROJECT.firebaseapp.com",
-  projectId: "PASTE_PROJECT_ID_HERE",
-  storageBucket: "PASTE_PROJECT.firebasestorage.app",
-  messagingSenderId: "PASTE_MESSAGING_SENDER_ID_HERE",
-  appId: "PASTE_APP_ID_HERE"
+  apiKey: "AIzaSyCngmcKs-Z8rWXfLIKdzrrCHV3Pya0grA4",
+  authDomain: "bnp-s-roll-playing-game.firebaseapp.com",
+  projectId: "bnp-s-roll-playing-game",
+  storageBucket: "bnp-s-roll-playing-game.firebasestorage.app",
+  messagingSenderId: "961333511660",
+  appId: "1:961333511660:web:65902d30b58db41002acc9",
+  measurementId: "G-G42K9NHLP7"
 };
